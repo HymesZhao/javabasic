@@ -34,6 +34,7 @@ import java.util.stream.Stream;
  * @create 2019 下午 4:25
  */
 public class StreamAPITest {
+    //好好学习，天天向上
 
     //创建 Stream方式一：通过集合
     @Test
