@@ -26,7 +26,7 @@ public class ArrayDemo1 {
 		System.out.println("请输入" + number + "个学生成绩：");
 		int maxScore = 0;
 		for(int i = 0;i < scores.length;i++){
-			scores[i] = scanner.nextInt();
+			scores[i] = scanner.nextInt(); // test2
 			//4.获取数组中的元素的最大值:最高分
 			if(maxScore < scores[i]){
 				maxScore = scores[i];
