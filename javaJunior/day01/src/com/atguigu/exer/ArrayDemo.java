@@ -8,7 +8,7 @@ public class ArrayDemo {
 		for (int i = 0; i < index.length; i++) {
 			tel += arr[index[i]];
 		}
-		System.out.println("联系方式：" + tel);//18...
+		System.out.println("联系方式：" + tel); // 18...
 	}
 
 }
