@@ -48,7 +48,7 @@ class Customer extends  Thread{
     public void run() {
 
         for (int i = 0; i < 3; i++) {
-            acct.deposit(1000); // good
+            acct.deposit(1000); // test2
         }
 
     }
