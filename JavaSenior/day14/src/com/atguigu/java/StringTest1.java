@@ -3,6 +3,7 @@ package com.atguigu.java;
 import org.junit.Test;
 
 import java.io.UnsupportedEncodingException;
+import java.nio.charset.StandardCharsets;
 import java.util.Arrays;
 
 /**
@@ -32,6 +33,7 @@ public class StringTest1 {
 
         byte[] gbks = str1.getBytes("gbk");//使用gbk字符集进行编码。
         System.out.println(Arrays.toString(gbks));
+        System.out.println(Arrays.toString("浩".getBytes()));
 
         System.out.println("******************");
 

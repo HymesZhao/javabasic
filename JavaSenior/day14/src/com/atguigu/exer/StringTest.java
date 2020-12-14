@@ -25,7 +25,7 @@ public class StringTest {
         System.out.println(ex.str);//good
         System.out.println(ex.ch);//best
         System.out.println(ex.a);//3
-        System.out.println(ex.people.age+","+ex.people.name);//3
+        System.out.println(ex.people.age+","+ex.people.name);//4,lisi
     }
 }
 class People{
