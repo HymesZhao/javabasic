@@ -7,6 +7,8 @@ import org.junit.Test;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.function.Predicate;
+import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 /**
@@ -16,10 +18,25 @@ import java.util.stream.Stream;
  * @create 2019 下午 4:42
  */
 public class StreamAPITest1 {
+    @Test
+    public void test5() {
+        List<Employee> list = EmployeeData.getEmployees();
+        List<Employee> newList =
+                list.stream().filter(employee -> employee.getAge() > 30 || employee.getName().contains("李")).
+                        collect(Collectors.toList());
+//        List<Employee> newList = list.stream().filter(new Predicate<Employee>() {
+//            @Override
+//            public boolean test(Employee employee) {
+//                return employee.getAge() > 30 || employee.getName().contains("李");
+//            }
+//        }).collect(Collectors.toList());
+        System.out.println(newList);
+
+    }
 
     //1-筛选与切片
     @Test
-    public void test1(){
+    public void test1() {
         List<Employee> list = EmployeeData.getEmployees();
 //        filter(Predicate p)——接收 Lambda ， 从流中排除某些元素。
         Stream<Employee> stream = list.stream();
@@ -37,11 +54,11 @@ public class StreamAPITest1 {
         System.out.println();
 //        distinct()——筛选，通过流所生成元素的 hashCode() 和 equals() 去除重复元素
 
-        list.add(new Employee(1010,"刘强东",40,8000));
-        list.add(new Employee(1010,"刘强东",41,8000));
-        list.add(new Employee(1010,"刘强东",40,8000));
-        list.add(new Employee(1010,"刘强东",40,8000));
-        list.add(new Employee(1010,"刘强东",40,8000));
+        list.add(new Employee(1010, "刘强东", 40, 8000));
+        list.add(new Employee(1010, "刘强东", 41, 8000));
+        list.add(new Employee(1010, "刘强东", 40, 8000));
+        list.add(new Employee(1010, "刘强东", 40, 8000));
+        list.add(new Employee(1010, "刘强东", 40, 8000));
 
 //        System.out.println(list);
 
@@ -50,7 +67,7 @@ public class StreamAPITest1 {
 
     //映射
     @Test
-    public void test2(){
+    public void test2() {
 //        map(Function f)——接收一个函数作为参数，将元素转换成其他形式或提取信息，该函数会被应用到每个元素上，并将其映射成一个新的元素。
         List<String> list = Arrays.asList("aa", "bb", "cc", "dd");
         list.stream().map(str -> str.toUpperCase()).forEach(System.out::println);
@@ -62,7 +79,7 @@ public class StreamAPITest1 {
         System.out.println();
         //练习2：
         Stream<Stream<Character>> streamStream = list.stream().map(StreamAPITest1::fromStringToStream);
-        streamStream.forEach(s ->{
+        streamStream.forEach(s -> {
             s.forEach(System.out::println);
         });
         System.out.println();
@@ -73,19 +90,18 @@ public class StreamAPITest1 {
     }
 
     //将字符串中的多个字符构成的集合转换为对应的Stream的实例
-    public static Stream<Character> fromStringToStream(String str){//aa
+    public static Stream<Character> fromStringToStream(String str) {//aa
         ArrayList<Character> list = new ArrayList<>();
-        for(Character c : str.toCharArray()){
+        for (Character c : str.toCharArray()) {
             list.add(c);
         }
-       return list.stream();
+        return list.stream();
 
     }
 
 
-
     @Test
-    public void test3(){
+    public void test3() {
         ArrayList list1 = new ArrayList();
         list1.add(1);
         list1.add(2);
@@ -104,7 +120,7 @@ public class StreamAPITest1 {
 
     //3-排序
     @Test
-    public void test4(){
+    public void test4() {
 //        sorted()——自然排序
         List<Integer> list = Arrays.asList(12, 43, 65, 34, 87, 0, -98, 7);
         list.stream().sorted().forEach(System.out::println);
@@ -116,14 +132,14 @@ public class StreamAPITest1 {
 //        sorted(Comparator com)——定制排序
 
         List<Employee> employees = EmployeeData.getEmployees();
-        employees.stream().sorted( (e1,e2) -> {
+        employees.stream().sorted((e1, e2) -> {
 
-           int ageValue = Integer.compare(e1.getAge(),e2.getAge());
-           if(ageValue != 0){
-               return ageValue;
-           }else{
-               return -Double.compare(e1.getSalary(),e2.getSalary());
-           }
+            int ageValue = Integer.compare(e1.getAge(), e2.getAge());
+            if (ageValue != 0) {
+                return ageValue;
+            } else {
+                return -Double.compare(e1.getSalary(), e2.getSalary());
+            }
 
         }).forEach(System.out::println);
     }

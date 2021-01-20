@@ -104,7 +104,37 @@ Optional.ofNullable(T t)：t可以为null
         System.out.println(girlName);
 
     }
+    @Test
+    public void test6(){
+        Girl girl = new Girl("cangjinkong");
+        String aa = doSomething1(girl);
+        System.out.println(aa);
+    }
 
+    private String doSomething1(Girl girl) {
+//        if (girl != null) {
+//            String userName = girl.getName();
+//            if (userName != null) {
+//                return userName.toUpperCase();
+//            } else {
+//                return null;
+//            }
+//        } else {
+//            return null;
+//        }
+        return Optional.ofNullable(girl).map(Girl::getName).map(String::toUpperCase).orElse(null);
+    }
+
+    @Test
+    public void test111() {
+        String a="null";
+        String b=doSomething(a);
+        System.out.println(b);
+    }
+
+    private String doSomething(String a) {
+        return Optional.ofNullable(a).orElse("b");
+    }
 
 
 }
