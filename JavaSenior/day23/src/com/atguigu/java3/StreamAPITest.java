@@ -6,6 +6,7 @@ import org.junit.Test;
 
 import java.util.Arrays;
 import java.util.List;
+import java.util.concurrent.TimeUnit;
 import java.util.stream.IntStream;
 import java.util.stream.Stream;
 
@@ -85,5 +86,51 @@ public class StreamAPITest {
         Stream.generate(Math::random).limit(10).forEach(System.out::println);
 
     }
+    //debug测试。
+    public static void main(String[] args) {
+        MyRunnable myRunnable = new MyRunnable();
+        Thread thread1 = new Thread(myRunnable, "线程1");
+        Thread thread2 = new Thread(myRunnable, "线程2");
+        Thread thread3 = new Thread(myRunnable, "线程3");
 
+        thread1.start();
+        thread2.start();
+        thread3.start();
+        dfsdfsdfsd();
+        System.out.println("sdfsdfds");
+        System.out.println("sdfsdfds");
+        System.out.println("sdfsdfds");
+        System.out.println("sdfsdfds");
+    }
+
+    private static void dfsdfsdfsd() {
+        Thread currentThread = Thread.currentThread();
+        System.out.println(currentThread.getName() + "-------------进入");
+        System.out.println(currentThread.getName() + "-------------离开");
+        System.out.println(currentThread.getName() + "-------------离开");
+        System.out.println(currentThread.getName() + "-------------离开");
+        System.out.println(currentThread.getName() + "-------------离开");
+        System.out.println(currentThread.getName() + "-------------离开");
+        System.out.println(currentThread.getName() + "-------------离开");
+    }
+
+    private static class MyRunnable implements Runnable {
+        @Override
+        public void run() {
+            Thread currentThread = Thread.currentThread();
+            System.out.println(currentThread.getName() + "-------------进入");
+
+//            try {
+//                TimeUnit.SECONDS.sleep(5);
+//            } catch (InterruptedException e) {
+//                e.printStackTrace();
+//            } finally {
+//                System.out.println(currentThread.getName() + "-------------离开");
+//            }
+            System.out.println(currentThread.getName() + "-------------离开");
+
+        }
+    }
 }
+
+
