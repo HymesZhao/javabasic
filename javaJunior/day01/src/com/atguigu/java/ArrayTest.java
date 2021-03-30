@@ -30,7 +30,7 @@ package com.atguigu.java;
  *   ⑥ 数组的内存解析 ：见ArrayTest1.java
  */
 public class ArrayTest {
-	
+	//4 4 sdfsdf
 	public static void main(String[] args) {
 		
 		//1. 一维数组的声明和初始化
